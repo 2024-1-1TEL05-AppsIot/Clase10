@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Clase10</string>
+    <string name="fui_sign_in_with_email">Acceder con email</string>
+    <string name="fui_sign_in_with_google">Acceder con Google</string>
+</resources>
