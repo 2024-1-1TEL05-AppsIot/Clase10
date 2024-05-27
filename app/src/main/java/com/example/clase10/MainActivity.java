@@ -43,10 +43,7 @@ public class MainActivity extends AppCompatActivity {
             String edadStr = binding.textFieldEdad.getEditText().getText().toString();
             String dni = binding.textFieldDni.getEditText().getText().toString();
 
-            Usuario usuario = new Usuario();
-            usuario.setNombre(nombre);
-            usuario.setApellido(apellido);
-            usuario.setEdad(Integer.parseInt(edadStr));
+            Usuario usuario = new Usuario(nombre, apellido, Integer.parseInt(edadStr));
 
             db.collection("usuarios")
                     .document(dni)
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             String dni = binding.textFieldDni.getEditText().getText().toString();
 
             if (!dni.isEmpty()) {
-                binding.btnListarUsuarios.setEnabled(false);
+                binding.btnListarUsuarios.setVisibility(View.GONE);
                 db.collection("usuarios")
                         .document(dni)
                         .get()
@@ -76,14 +73,15 @@ public class MainActivity extends AppCompatActivity {
                                     Log.d("msg-test", "DocumentSnapshot data: " + documentSnapshot.getData());
 
                                     Usuario usuario = documentSnapshot.toObject(Usuario.class);
-                                    Toast.makeText(this, "Nombre: " + usuario.getNombre() + " | apellido: " + usuario.getApellido(), TOAST_DURATION).show();
-
+                                    Toast.makeText(this, String.format("Nombre: %s | apellido: %s",
+                                                    usuario.getNombre(), usuario.getApellido()),
+                                            Toast.LENGTH_LONG).show();
                                 } else {
                                     Toast.makeText(this, "El usuario no existe", TOAST_DURATION).show();
                                 }
                             }
 
-                            binding.btnListarUsuarios.setEnabled(true);
+                            binding.btnListarUsuarios.setVisibility(View.VISIBLE);
                         });
             }
 

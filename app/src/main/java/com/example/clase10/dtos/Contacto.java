@@ -7,6 +7,12 @@ public class Contacto {
     private String correo;
     private String telefono;
 
+    public Contacto(String nombre, String apellido, String correo, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
 
     public String getNombre() {
         return nombre;
