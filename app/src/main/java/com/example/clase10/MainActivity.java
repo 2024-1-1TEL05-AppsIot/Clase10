@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     ListenerRegistration snapshotListener;
 
+    private static final int TOAST_DURATION = Toast.LENGTH_LONG;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
                     .document(dni)
                     .set(usuario)
                     .addOnSuccessListener(unused -> {
-                        Toast.makeText(this, "Usuario grabado", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Usuario grabado", TOAST_DURATION).show();
                     })
                     .addOnFailureListener(e -> {
-                        Toast.makeText(this, "Algo pasó al guardar ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Algo pasó al guardar ", TOAST_DURATION).show();
                     });
         });
 
@@ -74,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
                                     Log.d("msg-test", "DocumentSnapshot data: " + documentSnapshot.getData());
 
                                     Usuario usuario = documentSnapshot.toObject(Usuario.class);
-                                    Toast.makeText(this, "Nombre: " + usuario.getNombre() + " | apellido: " + usuario.getApellido(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(this, "Nombre: " + usuario.getNombre() + " | apellido: " + usuario.getApellido(), TOAST_DURATION).show();
 
                                 } else {
-                                    Toast.makeText(this, "El usuario no existe", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(this, "El usuario no existe", TOAST_DURATION).show();
                                 }
                             }
 
