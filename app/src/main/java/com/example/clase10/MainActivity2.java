@@ -83,6 +83,7 @@ public class MainActivity2 extends AppCompatActivity {
                             Log.d("msg-test", "---- Datos en tiempo real ----");
                             for (QueryDocumentSnapshot doc : collection) {
                                 Contacto contacto = doc.toObject(Contacto.class);
+                                Log.d("msg-test", "Colleccion:  " + contacto.getNombre() );
                                 Toast.makeText(this, String.format("Nombre: %s | apellido: %s",
                                                 contacto.getNombre(), contacto.getApellido()),
                                         Toast.LENGTH_LONG).show();

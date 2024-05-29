@@ -7,6 +7,10 @@ public class Usuario {
     private String apellido;
     private int edad;
 
+    public Usuario () {
+
+    }
+
     public Usuario(String nombre, String apellido, int edad) {
         this.nombre = nombre;
         this.apellido = apellido;
